@@ -43,8 +43,8 @@ int GcdofaNumber(int n1,int n2){
 };
 
 int main(){
-  int n1=6;
-  int n2=8;
+  int n1=8;
+  int n2=10;
   Solution obj;
   cout<<obj.GcdofaNumber(n1,n2);
   return 0;
