@@ -21,7 +21,6 @@ Input : nums = [1, 2]
 Output : [ [ ] , [1] , [2] , [1, 2] ]
 */
 
-
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -29,15 +28,13 @@ class Solution {
 public:
     vector<vector<int>> powerSet(vector<int>& nums) {
         int n = nums.size();
-        int total = 1 << n;
-        
         vector<vector<int>> result;
-
-        for(int mask = 0; mask < total; mask++) {
+        result.reserve(1 << n);
+        for (int mask = 0; mask < (1 << n); mask++) {
             vector<int> subset;
 
-            for(int i = 0; i < n; i++) {
-                if(mask & (1 << i)) {
+            for (int i = 0; i < n; i++) {
+                if (mask & (1 << i)) {
                     subset.push_back(nums[i]);
                 }
             }
@@ -51,23 +48,17 @@ public:
 
 int main() {
     int n;
-    cout << "Enter number of elements: ";
     cin >> n;
 
     vector<int> nums(n);
-    cout << "Enter elements: ";
-    for(int i = 0; i < n; i++) {
-        cin >> nums[i];
-    }
-    Solution obj;
-    vector<vector<int>> ans = obj.powerSet(nums);
+    for (int i = 0; i < n; i++) cin >> nums[i];
 
-    cout << "Power Set:\n";
-    for(auto subset : ans) {
+    Solution obj;
+    auto ans = obj.powerSet(nums);
+
+    for (auto &subset : ans) {
         cout << "[ ";
-        for(auto x : subset) {
-            cout << x << " ";
-        }
+        for (auto x : subset) cout << x << " ";
         cout << "]\n";
     }
 
